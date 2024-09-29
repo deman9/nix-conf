@@ -10,6 +10,7 @@
   home.packages = with pkgs; [
     fastfetch
     zoxide
+    bat
     eza
     starship
     tmux
