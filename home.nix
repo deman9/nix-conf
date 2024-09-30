@@ -13,7 +13,6 @@
     bat
     eza
     starship
-    tmux
     fzf
     ripgrep
     swaynotificationcenter
@@ -70,7 +69,11 @@ programs.git = {
     };
   };
 
+programs.tmux = {
+    enable = true;
+    sensibleOnTop = false;
 
+  };
 
 
   home.stateVersion = "24.05";
