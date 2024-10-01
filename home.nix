@@ -11,10 +11,13 @@
     fastfetch
     zoxide
     bat
+    xfce.thunar
+    xfce.thunar-volman
     eza
     starship
     fzf
     ripgrep
+    transmission_4-gtk
     swaynotificationcenter
     rofi
     foot
@@ -40,6 +43,10 @@ wayland.windowManager.sway = {
 	 terminal = "foot";
 	 menu = "rofi -show drun";
          window.titlebar = false;
+	output = {
+	  HDMI-A-1 = { pos = "0 0";};
+	  eDP-1 = {pos = "1920 0";};
+      };
 	 startup = [
 	{command = "swaybg -i /home/deman/Pictures/Wallpapers/ign_robots.png";}
       ];
@@ -54,9 +61,13 @@ wayland.windowManager.sway = {
 	 position = "top";
 	 }];
     };
+
 };
 programs.swaylock.enable = true;
 services.swaync.enable = true;
+services.swayidle = {
+  enable = true;
+  };
 
 programs.git = {
     enable = true;

@@ -121,6 +121,10 @@ security.pam.services.swaylock = {
      coreutils
      gcc
     bluez5-experimental 
+    gvfs
+    xfce.thunar-volman
+    fuse
+    xfce.tumbler
      bluez-tools
      bluez-alsa
    ];
@@ -135,7 +139,7 @@ security.pam.services.swaylock = {
   programs.ssh.startAgent = true;
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
