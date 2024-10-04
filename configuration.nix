@@ -130,9 +130,9 @@ security.pam.services.swaylock = {
    ];
 
   fonts.packages = with pkgs; [
-  font-awesome
   noto-fonts
-  nerdfonts];
+  nerdfonts
+  ];
 
 
   # List services that you want to enable:

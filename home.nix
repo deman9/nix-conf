@@ -14,7 +14,7 @@
     xfce.thunar
     xfce.thunar-volman
     eza
-    starship
+    # starship
     fzf
     ripgrep
     transmission_4-gtk
@@ -34,6 +34,17 @@
     pcloud
   ];
 
+
+programs.direnv = {
+  enable = true;
+  nix-direnv.enable = true;
+  };
+
+programs.starship = {
+  enable = true;
+};
+  
+fonts.fontconfig.enable = true;
 
 wayland.windowManager.sway = {
 	enable = true;
