@@ -26,6 +26,7 @@
     swaybg
     swayidle
     wl-clipboard
+    wezterm
     unzip   
     grim
     slurp
@@ -35,6 +36,9 @@
   ];
 
 
+# programs.wezterm = {
+#     enable = true;
+  # };
 programs.direnv = {
   enable = true;
   nix-direnv.enable = true;
