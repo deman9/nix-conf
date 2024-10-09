@@ -21,7 +21,7 @@ boot.loader.grub = {
 boot.supportedFilesystems = ["zfs"];
 boot.zfs.requestEncryptionCredentials = true;
 
-networking.hostId = "4970cc4d"; 
+networking.hostId = "12a22d59"; 
 
 nix = {
     optimise.automatic = true;

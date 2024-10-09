@@ -19,7 +19,7 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E3DE-4F7F";
+    { device = "/dev/disk/by-uuid/5689-FF31";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -38,7 +38,6 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wwp0s20f0u5i12.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
