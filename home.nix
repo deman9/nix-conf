@@ -10,6 +10,8 @@
   home.packages = with pkgs; [
     fastfetch
     zoxide
+    signal-desktop
+    teams-for-linux
     bat
     xfce.thunar
     xfce.thunar-volman
@@ -25,7 +27,9 @@
     swaylock
     swaybg
     swayidle
+    zoom-us
     wl-clipboard
+    vscode
     wezterm
     unzip   
     grim
@@ -33,6 +37,7 @@
     tutanota-desktop
     yazi
     pcloud
+    chromium
     zellij
   ];
 
