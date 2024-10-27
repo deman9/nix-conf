@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -7,8 +7,16 @@
     ];
 
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;
+    fallback = true;
+    warn-dirty = false;
+ 
+  };
+
   
+  # nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}"];
   environment.variables.EDITOR = "nvim";
   
 boot.loader.grub = {
@@ -124,6 +132,7 @@ security.pam.services.swaylock = {
     gvfs
     xfce.thunar-volman
     fuse
+    nixd
     xfce.tumbler
      bluez-tools
      bluez-alsa

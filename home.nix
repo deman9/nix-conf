@@ -10,8 +10,6 @@
   home.packages = with pkgs; [
     fastfetch
     zoxide
-    signal-desktop
-    teams-for-linux
     bat
     xfce.thunar
     xfce.thunar-volman
@@ -27,9 +25,7 @@
     swaylock
     swaybg
     swayidle
-    zoom-us
     wl-clipboard
-    vscode
     wezterm
     unzip   
     grim
@@ -37,8 +33,7 @@
     tutanota-desktop
     yazi
     pcloud
-    chromium
-    zellij
+    nwg-look
   ];
 
 
@@ -101,22 +96,22 @@ programs.git = {
     };
   };
 
-# programs.tmux = {
-#     keyMode = "vi";
-#     enable = true;
-#     prefix = "C-Space";
-#     baseIndex = 1;
-#     sensibleOnTop = true;
-#     plugins = with pkgs; [
-#       tmuxPlugins.nord
-#     ];
-#     extraConfig = ''
-#       set -g @plugin nord
-#       set -g renumber-windows on
-#       set -g status-position bottom
-#     '';
-#   };
-#
+programs.tmux = {
+    keyMode = "vi";
+    enable = true;
+    prefix = "C-Space";
+    baseIndex = 1;
+    sensibleOnTop = true;
+    plugins = with pkgs; [
+      tmuxPlugins.nord
+    ];
+    extraConfig = ''
+      set -g @plugin nord
+      set -g renumber-windows on
+      set -g status-position bottom
+    '';
+  };
+
 
   home.stateVersion = "24.05";
 
