@@ -28,12 +28,15 @@
     wl-clipboard
     wezterm
     unzip   
+    libreoffice
     grim
     slurp
     tutanota-desktop
+    zellij
     yazi
-    pcloud
     nwg-look
+    zoom-us
+    teams-for-linux
   ];
 
 
@@ -54,6 +57,7 @@ fonts.fontconfig.enable = true;
 wayland.windowManager.sway = {
 	enable = true;
 	wrapperFeatures.gtk = true;
+	extraSessionCommands = "export MOZ_ENABLE_WAYLAND=1";
 	config = {
 	 modifier = "Mod4";
 	 terminal = "foot";
@@ -65,6 +69,8 @@ wayland.windowManager.sway = {
       };
 	 startup = [
 	{command = "swaybg -i /home/deman/Pictures/Wallpapers/ign_robots.png";}
+	{command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP";}
+	{command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP";}
       ];
 	 gaps = {
 	  smartGaps = true;

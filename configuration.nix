@@ -4,6 +4,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      ./modules/pcloud.nix
     ];
 
 
@@ -12,7 +13,9 @@
     auto-optimise-store = true;
     fallback = true;
     warn-dirty = false;
- 
+    nix-path = config.nix.nixPath;
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
   
@@ -74,14 +77,15 @@ security.polkit.enable = true;
   # Enable CUPS to print documents.
    services.printing.enable = true;
 
+services.dbus.enable = true;
 xdg = {
 	portal = {
 	enable = true;
 	config.common.default = "*";
-      #	extraPortals = with pkgs; [
-      #	xdg-desktop-portal-wlr
-      #	xdg-desktop-portal-gtk
-      #	];
+      extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+      ];
 	};
 	};
 security.rtkit.enable = true;
@@ -130,6 +134,7 @@ security.pam.services.swaylock = {
      gcc
     bluez5-experimental 
     gvfs
+    pcloud
     xfce.thunar-volman
     fuse
     nixd
