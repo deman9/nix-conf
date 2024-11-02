@@ -5,6 +5,7 @@ imports =
     [ 
       ./hardware-configuration.nix
       ./modules/pcloud.nix
+      ./modules/greetd.nix
     ];
 
 nix = {
