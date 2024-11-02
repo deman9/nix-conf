@@ -2,61 +2,62 @@
 
 {
   home = {
-  username = "deman";
-  homeDirectory = "/home/deman";
+    username = "deman";
+    homeDirectory = "/home/deman";
     packages = with pkgs; [
-    fastfetch
-    zoxide
-    bat
-    xfce.thunar
-    xfce.thunar-volman
-    eza
-    fzf
-    ripgrep
-    transmission_4-gtk
-    swaynotificationcenter
-    rofi
-    foot
-    waybar
-    swaylock
-    swaybg
-    swayidle
-    wl-clipboard
-    unzip
-    libreoffice
-    grim
-    slurp
-    tutanota-desktop
-    zellij
-    yazi
-    nwg-look
-    zoom-us
-    teams-for-linux
-  ];
+      fastfetch
+      zoxide
+      bat
+      xfce.thunar
+      xfce.thunar-volman
+      eza
+      fzf
+      ripgrep
+      transmission_4-gtk
+      swaynotificationcenter
+      rofi
+      foot
+      waybar
+      swaylock
+      swaybg
+      swayidle
+      wl-clipboard
+      unzip
+      libreoffice
+      grim
+      slurp
+      tutanota-desktop
+      zellij
+      yazi
+      nwg-look
+      zoom-us
+      teams-for-linux
+    ];
   };
-  
+  gtk.enable = true;
+
   programs = {
     swaylock.enable = true;
     starship.enable = true;
     direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    config = {
-      global = {
-        hide_env_diff = true;
+      enable = true;
+      nix-direnv.enable = true;
+      config = {
+        global = {
+          hide_env_diff = true;
+        };
       };
     };
-  };
-  programs.git = {
-    enable = true;
-    package = pkgs.gitAndTools.gitFull;
-    userName = "deman9";
-    userEmail = "andem@tuta.io";
-    extraConfig = {
-      core.editor = "nvim";
-      init.defaultBranch = "main";
+    git = {
+      enable = true;
+      package = pkgs.gitAndTools.gitFull;
+      userName = "deman9";
+      userEmail = "andem@tuta.io";
+      extraConfig = {
+        core.editor = "nvim";
+        init.defaultBranch = "main";
+      };
     };
-  };
 
   };
 
@@ -99,9 +100,11 @@
     };
 
   };
-  services.swaync.enable = true;
-  services.swayidle = {
-    enable = true;
+  services = {
+    swaync.enable = true;
+    swayidle = {
+      enable = true;
+    };
   };
 
   # programs.tmux = {
@@ -120,7 +123,6 @@
   #   '';
   # };
 
-  home.stateVersion = "24.05";
-
-  programs.home-manager.enable = true;
+    programs.home-manager.enable = true;
+    home.stateVersion = "24.05";
 }
