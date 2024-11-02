@@ -144,6 +144,7 @@
   ];
 
   programs = {
+    dconf.enable = true;
     fish.enable = true;
     xfconf.enable = true;
     ssh.startAgent = true;

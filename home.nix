@@ -34,8 +34,15 @@
       teams-for-linux
     ];
   };
-  gtk.enable = true;
-
+  gtk = {
+    enable = true;
+    theme.package = pkgs.nordic;
+    theme.name = "Nordic-bluish-accent-standard-buttons";
+    iconTheme.package = pkgs.nordzy-icon-theme;
+    iconTheme.name = "Nordzy";
+    cursorTheme.package = pkgs.nordzy-cursor-theme;
+    cursorTheme.name = "Nordzy";
+  };
   programs = {
     swaylock.enable = true;
     starship.enable = true;
