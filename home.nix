@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "deman";
-  home.homeDirectory = "/home/deman";
-
-  home.packages = with pkgs; [
+  home = {
+  username = "deman";
+  homeDirectory = "/home/deman";
+    packages = with pkgs; [
     fastfetch
     zoxide
     bat
@@ -33,8 +33,12 @@
     zoom-us
     teams-for-linux
   ];
-
-  programs.direnv = {
+  };
+  
+  programs = {
+    swaylock.enable = true;
+    starship.enable = true;
+    direnv = {
     enable = true;
     nix-direnv.enable = true;
     config = {
@@ -43,9 +47,17 @@
       };
     };
   };
-
-  programs.starship = {
+  programs.git = {
     enable = true;
+    package = pkgs.gitAndTools.gitFull;
+    userName = "deman9";
+    userEmail = "andem@tuta.io";
+    extraConfig = {
+      core.editor = "nvim";
+      init.defaultBranch = "main";
+    };
+  };
+
   };
 
   fonts.fontconfig.enable = true;
@@ -87,21 +99,9 @@
     };
 
   };
-  programs.swaylock.enable = true;
   services.swaync.enable = true;
   services.swayidle = {
     enable = true;
-  };
-
-  programs.git = {
-    enable = true;
-    package = pkgs.gitAndTools.gitFull;
-    userName = "deman9";
-    userEmail = "andem@tuta.io";
-    extraConfig = {
-      core.editor = "nvim";
-      init.defaultBranch = "main";
-    };
   };
 
   # programs.tmux = {
