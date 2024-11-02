@@ -1,12 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
   home.username = "deman";
   home.homeDirectory = "/home/deman";
 
-  # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     fastfetch
     zoxide
@@ -14,7 +11,6 @@
     xfce.thunar
     xfce.thunar-volman
     eza
-    # starship
     fzf
     ripgrep
     transmission_4-gtk
@@ -26,7 +22,6 @@
     swaybg
     swayidle
     wl-clipboard
-    wezterm
     unzip
     libreoffice
     grim
@@ -39,9 +34,6 @@
     teams-for-linux
   ];
 
-  # programs.wezterm = {
-  #     enable = true;
-  # };
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -84,7 +76,6 @@
         smartGaps = true;
         inner = 2;
         outer = 2;
-
       };
       bars = [
         {
@@ -113,25 +104,23 @@
     };
   };
 
-  programs.tmux = {
-    keyMode = "vi";
-    enable = true;
-    prefix = "C-Space";
-    baseIndex = 1;
-    sensibleOnTop = true;
-    plugins = with pkgs; [
-      tmuxPlugins.nord
-    ];
-    extraConfig = ''
-      set -g @plugin nord
-      set -g renumber-windows on
-      set -g status-position bottom
-    '';
-  };
+  # programs.tmux = {
+  #   keyMode = "vi";
+  #   enable = true;
+  #   prefix = "C-Space";
+  #   baseIndex = 1;
+  #   sensibleOnTop = true;
+  #   plugins = with pkgs; [
+  #     tmuxPlugins.nord
+  #   ];
+  #   extraConfig = ''
+  #     set -g @plugin nord
+  #     set -g renumber-windows on
+  #     set -g status-position bottom
+  #   '';
+  # };
 
   home.stateVersion = "24.05";
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
 }

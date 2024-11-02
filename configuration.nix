@@ -125,14 +125,11 @@
       git
       firefox
       curl
-      waybar
-      wofi
       coreutils
       gcc
       bluez5-experimental
       gvfs
       pcloud
-      xfce.thunar-volman
       fuse
       nixd
       xfce.tumbler
