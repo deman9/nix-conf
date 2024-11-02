@@ -27,7 +27,7 @@
     swayidle
     wl-clipboard
     wezterm
-    unzip   
+    unzip
     libreoffice
     grim
     slurp
@@ -39,64 +39,70 @@
     teams-for-linux
   ];
 
-
-# programs.wezterm = {
-#     enable = true;
+  # programs.wezterm = {
+  #     enable = true;
   # };
-programs.direnv = {
-  enable = true;
-  nix-direnv.enable = true;
-  config = {
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    config = {
       global = {
-      hide_env_diff = true;
-    };
+        hide_env_diff = true;
+      };
     };
   };
 
-programs.starship = {
-  enable = true;
-};
-  
-fonts.fontconfig.enable = true;
+  programs.starship = {
+    enable = true;
+  };
 
-wayland.windowManager.sway = {
-	enable = true;
-	wrapperFeatures.gtk = true;
-	extraSessionCommands = "export MOZ_ENABLE_WAYLAND=1";
-	config = {
-	 modifier = "Mod4";
-	 terminal = "foot";
-	 menu = "rofi -show drun";
-         window.titlebar = false;
-	output = {
-	  HDMI-A-1 = { pos = "0 0";};
-	  eDP-1 = {pos = "1920 0";};
+  fonts.fontconfig.enable = true;
+
+  wayland.windowManager.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraSessionCommands = "export MOZ_ENABLE_WAYLAND=1";
+    config = {
+      modifier = "Mod4";
+      terminal = "foot";
+      menu = "rofi -show drun";
+      window.titlebar = false;
+      output = {
+        HDMI-A-1 = {
+          pos = "0 0";
+        };
+        eDP-1 = {
+          pos = "1920 0";
+        };
       };
-	 startup = [
-	{command = "swaybg -i /home/deman/Pictures/Wallpapers/ign_robots.png";}
-	{command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP";}
-	{command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP";}
+      startup = [
+        { command = "swaybg -i /home/deman/Pictures/Wallpapers/ign_robots.png"; }
+        { command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
+        { command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
       ];
-	 gaps = {
-	  smartGaps = true;
-	  inner = 2;
-	  outer = 2;
-	  
+      gaps = {
+        smartGaps = true;
+        inner = 2;
+        outer = 2;
+
       };
-	 bars = [{fonts.size = 15.0;
-	 command = "waybar";
-	 position = "top";
-	 }];
+      bars = [
+        {
+          fonts.size = 15.0;
+          command = "waybar";
+          position = "top";
+        }
+      ];
     };
 
-};
-programs.swaylock.enable = true;
-services.swaync.enable = true;
-services.swayidle = {
-  enable = true;
+  };
+  programs.swaylock.enable = true;
+  services.swaync.enable = true;
+  services.swayidle = {
+    enable = true;
   };
 
-programs.git = {
+  programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
     userName = "deman9";
@@ -107,7 +113,7 @@ programs.git = {
     };
   };
 
-programs.tmux = {
+  programs.tmux = {
     keyMode = "vi";
     enable = true;
     prefix = "C-Space";
@@ -123,11 +129,9 @@ programs.tmux = {
     '';
   };
 
-
   home.stateVersion = "24.05";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  
 }
