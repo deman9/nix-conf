@@ -53,7 +53,7 @@
 
   time.timeZone = "Europe/Warsaw";
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "pl_PL.UTF-8";
 
   security = {
     polkit.enable = true;
@@ -120,6 +120,8 @@
     sessionVariables.NIXOS_OZONE_WL = "1";
     systemPackages = with pkgs; [
       neovim
+      distrobox
+      distrobox-tui
       wget
       pavucontrol
       git
@@ -134,9 +136,11 @@
       nixd
       xfce.tumbler
       bluez-tools
+      dive # look into docker image layers
+      podman-tui # status of containers in the terminal
+      docker-compose # start group of containers for dev
+      #podman-compose # start group of containers for dev
       bluez-alsa
-      postgresql
-      pgadmin
     ];
   };
 
@@ -159,6 +163,28 @@
     };
   };
 
-# Replace with the desired PostgreSQL version
+  # Enable common container config files in /etc/containers
+  virtualisation.containers = {
+    enable = true;
+    storage.settings = {
+      storage = {
+        driver = "zfs";
+        graphroot = "/var/lib/containers/storage";
+        runroot = "/run/containers/storage";
+      };
+    };
+  };
+
+  virtualisation = {
+    podman = {
+      enable = true;
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
+  # Replace with the desired PostgreSQL version
   system.stateVersion = "24.05"; # Did you read the comment?
 }
