@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib,... }:
 
 {
   home = {
@@ -15,7 +15,8 @@
       ripgrep
       transmission_4-gtk
       swaynotificationcenter
-      rofi
+      rofi-wayland
+      rofi-bluetooth
       foot
       waybar
       swaylock
@@ -104,6 +105,12 @@
           position = "top";
         }
       ];
+      keybindings = let modifier = config.wayland.windowManager.sway.config.modifier;
+        in lib.mkOptionDefault {
+          "${modifier}+Shift+m" = "move scratchpad";
+          "${modifier}+m" = "scratchpad show";
+          "${modifier}+b" = "exec --no-startup-id rofi-bluetooth";
+        };
     };
 
   };

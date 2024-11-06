@@ -10,7 +10,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/pcloud.nix
-    ./modules/greetd.nix
+    # ./modules/greetd.nix
   ];
 
   nix = {
@@ -53,7 +53,7 @@
 
   time.timeZone = "Europe/Warsaw";
 
-  i18n.defaultLocale = "pl_PL.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   security = {
     polkit.enable = true;
@@ -135,6 +135,8 @@
       xfce.tumbler
       bluez-tools
       bluez-alsa
+      postgresql
+      pgadmin
     ];
   };
 
@@ -157,5 +159,6 @@
     };
   };
 
+# Replace with the desired PostgreSQL version
   system.stateVersion = "24.05"; # Did you read the comment?
 }
