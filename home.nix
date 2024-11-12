@@ -1,6 +1,11 @@
-{ config, pkgs, lib,... }:
+{ config, pkgs, lib, ... }:
 
 {
+  imports = [
+    ./modules/nvim/nvim.nix
+    ./modules/sway.nix
+  ];
+
   home = {
     username = "deman";
     homeDirectory = "/home/deman";
@@ -10,6 +15,8 @@
       bat
       xfce.thunar
       xfce.thunar-volman
+      gopls
+      go
       eza
       fzf
       ripgrep
@@ -18,6 +25,7 @@
       rofi-wayland
       rofi-bluetooth
       foot
+      rofi-power-menu
       waybar
       swaylock
       swaybg
@@ -36,13 +44,8 @@
     ];
   };
   gtk = {
-    enable = true;
-    theme.package = pkgs.nordic;
-    theme.name = "Nordic-bluish-accent-standard-buttons";
     iconTheme.package = pkgs.nordzy-icon-theme;
     iconTheme.name = "Nordzy";
-    cursorTheme.package = pkgs.nordzy-cursor-theme;
-    cursorTheme.name = "Nordzy";
   };
   programs = {
     swaylock.enable = true;
@@ -71,71 +74,12 @@
 
   fonts.fontconfig.enable = true;
 
-  wayland.windowManager.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    extraSessionCommands = "export MOZ_ENABLE_WAYLAND=1";
-    config = {
-      modifier = "Mod4";
-      terminal = "foot";
-      menu = "rofi -show drun";
-      window.titlebar = false;
-      output = {
-        HDMI-A-1 = {
-          pos = "0 0";
-        };
-        eDP-1 = {
-          pos = "1920 0";
-        };
-      };
-      startup = [
-        { command = "swaybg -i /home/deman/Pictures/Wallpapers/ign_robots.png"; }
-        { command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
-        { command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
-      ];
-      gaps = {
-        smartGaps = true;
-        inner = 2;
-        outer = 2;
-      };
-      bars = [
-        {
-          fonts.size = 15.0;
-          command = "waybar";
-          position = "top";
-        }
-      ];
-      keybindings = let modifier = config.wayland.windowManager.sway.config.modifier;
-        in lib.mkOptionDefault {
-          "${modifier}+Shift+m" = "move scratchpad";
-          "${modifier}+m" = "scratchpad show";
-          "${modifier}+b" = "exec --no-startup-id rofi-bluetooth";
-        };
-    };
-
-  };
   services = {
     swaync.enable = true;
     swayidle = {
       enable = true;
     };
   };
-
-  # programs.tmux = {
-  #   keyMode = "vi";
-  #   enable = true;
-  #   prefix = "C-Space";
-  #   baseIndex = 1;
-  #   sensibleOnTop = true;
-  #   plugins = with pkgs; [
-  #     tmuxPlugins.nord
-  #   ];
-  #   extraConfig = ''
-  #     set -g @plugin nord
-  #     set -g renumber-windows on
-  #     set -g status-position bottom
-  #   '';
-  # };
 
     programs.home-manager.enable = true;
     home.stateVersion = "24.05";

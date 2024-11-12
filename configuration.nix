@@ -10,7 +10,8 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/pcloud.nix
-    # ./modules/greetd.nix
+    ./modules/greetd.nix
+    ./modules/stylix.nix
   ];
 
   nix = {
@@ -80,6 +81,7 @@
   };
 
   services = {
+    xserver.xkb.layout = "pl";
     printing.enable = true;
     blueman.enable = true;
     gnome.gnome-keyring.enable = true;
@@ -135,6 +137,7 @@
       fuse
       nixd
       xfce.tumbler
+      fd
       bluez-tools
       dive # look into docker image layers
       podman-tui # status of containers in the terminal
@@ -146,6 +149,7 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
+    font-awesome
     nerdfonts
   ];
 
