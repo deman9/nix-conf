@@ -129,6 +129,7 @@
       git
       firefox
       curl
+      bash
       coreutils
       gcc
       bluez5-experimental

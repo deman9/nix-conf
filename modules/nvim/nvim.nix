@@ -11,6 +11,10 @@
       vimdiffAlias = true;
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
+        ${builtins.readFile ./plugin/cmp.lua}
+       ${builtins.readFile ./plugin/telescope.lua}
+     ${builtins.readFile ./plugin/lsp.lua}
+     ${builtins.readFile ./plugin/treesitter.lua}
       '';
       extraPackages = with pkgs; [
         nixd
@@ -19,33 +23,24 @@
         fd
       ];
       plugins = with pkgs.vimPlugins; [
-        {
-          plugin = nvim-lspconfig;
-          config = toLuaFile ./plugin/lsp.lua;
-        }
-        neodev-nvim
-        {
-          plugin = nvim-cmp;
-         config = toLuaFile ./plugin/cmp.lua;
-        } 
-      {
-        plugin = telescope-nvim;
-        config = toLuaFile ./plugin/telescope.lua;
-      }
+        nvim-lspconfig
+         nvim-cmp
+        telescope-nvim
         telescope-fzf-native-nvim
+        neodev-nvim
+        telescope-ui-select-nvim
         plenary-nvim
         cmp_luasnip
         cmp-nvim-lsp
+        cmp-path
         luasnip
         friendly-snippets
-        which-key-nvim
-        mini-align
-        mini-jump
+       which-key-nvim
         mini-pairs
         mini-surround
         mini-comment
         mini-bracketed
-        mini-git
+
       {
         plugin = mini-icons;
         type = "lua";
@@ -75,7 +70,6 @@
             p.tree-sitter-toml
             p.tree-sitter-fish
           ]));
-          config =toLuaFile ./plugin/treesitter.lua;
         }
       ];
     };
