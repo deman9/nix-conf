@@ -54,7 +54,8 @@
 
   time.timeZone = "Europe/Warsaw";
 
-  i18n.defaultLocale = "pl_PL.UTF-8";
+  
+  # i18n.defaultLocale = "pl_PL.UTF-8";
 
   security = {
     polkit.enable = true;
@@ -151,7 +152,8 @@
   fonts.packages = with pkgs; [
     noto-fonts
     font-awesome
-    nerdfonts
+    nerd-fonts.mplus
+    nerd-fonts.jetbrains-mono
   ];
 
   programs = {

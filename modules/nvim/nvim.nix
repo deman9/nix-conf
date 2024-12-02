@@ -19,6 +19,7 @@
       extraPackages = with pkgs; [
         nixd
         lua-language-server
+        python312Packages.python-lsp-server
         wl-clipboard
         fd
       ];

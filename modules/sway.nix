@@ -11,6 +11,9 @@
       terminal = "foot";
       menu = "rofi -show drun";
       window.titlebar = false;
+      # input = {
+      #   xkb_layout = "pl";
+      # };
       output = {
         HDMI-A-1 = {
           pos = "0 0";

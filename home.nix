@@ -11,9 +11,12 @@
     homeDirectory = "/home/deman";
     packages = with pkgs; [
       fastfetch
+      feh
+      inkscape
       zoxide
       bat
       xfce.thunar
+      zathura
       xfce.thunar-volman
       gopls
       go
@@ -38,8 +41,7 @@
       tutanota-desktop
       zellij
       yazi
-      nwg-look
-      zoom-us
+      signal-desktop
       teams-for-linux
     ];
   };
