@@ -19,13 +19,15 @@
           pos = "0 0";
         };
         eDP-1 = {
-          pos = "1920 0";
+          pos = "2560 0";
         };
       };
       startup = [
         { command = "swaybg -i /home/deman/Pictures/Wallpapers/ign_robots.png"; }
         { command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
         { command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
+        { command = "include ~/.config/sway/outputs"; }
+        { command = "include ~/.config/sway/workspaces"; }
       ];
       gaps = {
         smartGaps = true;

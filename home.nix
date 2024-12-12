@@ -37,6 +37,7 @@
       unzip
       libreoffice
       grim
+      nwg-displays
       slurp
       tutanota-desktop
       zellij
